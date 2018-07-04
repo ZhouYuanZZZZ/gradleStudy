@@ -1,0 +1,43 @@
+group 'com.zy.study'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+
+sourceCompatibility = 1.8
+
+buildDir = 'build0' //项目构建输出路径
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+}
+
+task wrapper(type: Wrapper){
+ gradleVersion = '1.7'
+}
+
+task first <<{
+    println 'first'
+}
+
+task second <<{
+    println 'second'
+}
+
+task printVersion( dependsOn:[first,second]){
+    group = 'g0'
+    description = 'd0'
+
+    doFirst {
+        logger.error "Version Before"
+    }
+
+    doLast {
+        logger.error "Version:{}",project.version
+    }
+}
+
+
