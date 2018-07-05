@@ -9,10 +9,14 @@ buildDir = 'build0' //项目构建输出路径
 
 repositories {
     mavenCentral()
+    maven { url 'E:\\repo'} //使用file协议，本地仓库
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    // https://mvnrepository.com/artifact/org.springframework/spring-core
+    compile group: 'org.springframework', name: 'spring-core', version: '5.0.7.RELEASE'
+
 }
 
 task wrapper(type: Wrapper){
